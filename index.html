@@ -129,7 +129,7 @@
 
   var audioController = new AudioController();
 
-  //audioController.mute.gain.value = 0;
+ // audioController.mute.gain.value = 0;
 
 
   var controller = new Leap.Controller();
@@ -148,15 +148,8 @@
   var source = audioController.ctx.createMediaElementSource(audio);
   source.connect(audioController.gain);
 
-
- /* var userAudio = new UserAudio( audioController );
-
-  userAudio.onStreamCreated = function(){
-
-    console.log('hellos');
-    onLoad();
-
-  }*/
+  console.log( source );
+  
 
 
   var loader  = new THREE.OBJLoader();
@@ -350,8 +343,15 @@
      domElement: gHolder 
     });
 
-    source.mediaElement.play();
+    console.log( source );
+    
+    if( source.mediaElement ){
+      source.mediaElement.play();
+    }else{
 
+      audio.play();
+
+    }
   }
 
 
